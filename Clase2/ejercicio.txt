@@ -47,14 +47,11 @@ Promedio: 9.1
 
 Respuesta :
 
-#recorrer el arreglo para imprimir la matricula 
-for mat in estudiantes.items():
-     #imprime la matricula
-     print(f'Datos del Alumno: Matricula {mat[0]}')
-     #recorre el arreglo para imprimir el nombre, edad y promedio del alumno
-     for key, value in mat[1].items():
-            #imprime el nombre, edad y promedio del alumno
-            print(f'{key}: {value}')
+for mat ,value in estudiantes.items():
+    print("Matricula :",mat)
+    print("Nombre : ",value["nombre"])
+    print("Edad : ",value["edad"])
+    print("Promedio : ",value["promedio"])
 
 
 PARTE 3 — OBTENER UN ESTUDIANTE
@@ -66,12 +63,8 @@ PARTE 3 — OBTENER UN ESTUDIANTE
 Respuesta:
 
 mat = input("Ingresa la matricula: ")
-
-if mat in estudiantes:
-    print("La matricula ya existe")
-    print(f"Matricula: {mat}, Nombre: {estudiantes[mat]['nombre']}, EDAD: {estudiantes[mat]['edad']}, PROMEDIO: {estudiantes[mat]['promedio']}")
-else:
-    print("Estudiante NO encontrado")
+info_alumno= estudiantes.get(mat, "Estudiante no encontrado")
+print(info_alumno)
 
 
 
@@ -81,40 +74,26 @@ PARTE 4 — ACTUALIZAR DATOS
 2.- Si existe, permite actualizar el promedio del estudiante.
 3.- Muestra el diccionario actualizado.
 
-Respuesta:
-
 mat = input("Ingresa la matricula: ")
-
-if mat in estudiantes:
-    print(f"La matricula ya existe ,ingresa el nuevo promedio" )
-    new_Prom=input("Nuevo promedio: ")
-    estudiantes[mat]["promedio"] = new_Prom
-    print(f"el nuevo promedio es :", estudiantes[mat]["promedio"])
-    print(f"Verificar", estudiantes[mat])
-
+prom = 12
+if estudiantes.get(mat): 
+    estudiantes[mat]['promedio'] = prom
+    print(estudiantes[mat])
 else:
-    print("Estudiante NO encontrado")
+    print("No existe la matricula")
 
 
 
-PARTE 5 — ELIMINAR ESTUDIANTE
+"""PARTE 5 — ELIMINAR ESTUDIANTE
 
 1.- Solicita una matrícula.
 2.- Si existe, elimínala del diccionario usando del.
 3.- Muestra el diccionario final.
+"""
 
-Respuesta:
-
-mat = input("Ingresa la matricula: ")
-
-if mat in estudiantes:
-    print(f"La matricula ya existe")
-    del estudiantes[mat]
-    print(f"Estudiante eliminado: {mat}")
-    print(estudiantes)
-
-else:
-    print("Estudiante NO encontrado")
+mat = input("ingresa la matricula :")
+del estudiantes[mat]
+print(estudiantes) 
 
 
 PARTE 6 — ANÁLISIS
